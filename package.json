@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": ">What is this project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexJoo2003/Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexJoo2003/Blog/issues"
+  },
+  "homepage": "https://github.com/AlexJoo2003/Blog#readme",
+  "dependencies": {
+    "mongodb": "^4.4.1"
+  }
+}

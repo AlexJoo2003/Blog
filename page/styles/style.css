@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #e7e7e7;
+}
+
+
+header{
+    height: 15vh;
+    background-color: #eef895b9;
+}
+header img{
+    border-radius: 50%;
+}
+header h1{
+    align-self: center;
+}
+.header-content{
+    background-color: #f09090c9;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    gap: 100px;
+}
+
+
