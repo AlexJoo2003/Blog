@@ -3,12 +3,12 @@
     width: 80%;
     margin: auto;
     background-color: #fcd6b785;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px 0;
+    padding: 20px 0;
 }
 
 .post{

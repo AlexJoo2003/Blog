@@ -1,0 +1,21 @@
+.postEditor{
+    width: 80%;
+    margin: auto;
+    background-color: #fcd6b785;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 10px 0;
+    padding-top: 20px;
+}
+
+
+.postEditor textarea {
+    min-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+}
+.postEditor button {
+    height: 20px;
+}

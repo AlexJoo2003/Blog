@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Write a Post</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/homepage.css">
-    <link rel="stylesheet" href="styles/postList.css">
+    <link rel="stylesheet" href="styles/postEditor.css">
 </head>
 <body>
     
@@ -17,13 +16,13 @@
             <h1><a href="index.html">Website Name</a></h1>
         </div>
     </header>
-    <main class="postList">
+    <main class="postEditor">
+        <input type="text" placeholder="Title" id="title">
+        <textarea id="content" placeholder="Write the content here"></textarea>
+        <button id="upload-button">Upload</button>
     </main>
-    <div class="createPost">
-        +
-    </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="scripts/homePage.js"></script>
+<script src="scripts/postEditor.js"></script>
 </body>
 </html>
