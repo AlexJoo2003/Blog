@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Write a Post</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/postEditor.css">
+    <link rel="stylesheet" href="styles/signinPage.css">
 </head>
 <body>
     
@@ -15,23 +15,18 @@
             <img src='https://dummyimage.com/500x500.png?text=Website%20Logo' alt=''/>
             <h1><a href="index.html">Website Name</a></h1>
         </div>
-        <center>
-            <a href="./signinPage.html">create a new account</a>
-        </center>
     </header>
-    <main class="postEditor">
+
+    <main>
         <div>
-        <input type="text" placeholder="Title" id="title" required>
-        <textarea id="content" placeholder="Write the content here" required></textarea>
             <em>only letters and numbers</em> <br>
             <label>Username: </label> <input type="text" id="username" pattern="[a-zA-Z0-9-]+" required> <br>
             <label>Password: </label> <input type="password" id="password" pattern="[a-zA-Z0-9-]+" required> <br>
-            <button id="login">Log in</button> <button id="signin">Sign in</button>
+            <button id="signin">Sign in</button>
         </div>
-        <button id="upload-button" disabled>Upload</button>
     </main>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="scripts/postEditor.js"></script>
+<script src="scripts/signinPage.js"></script>
 </body>
 </html>

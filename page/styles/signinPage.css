@@ -1,0 +1,9 @@
+main{
+    width: 500px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #f5fbc0;
+}

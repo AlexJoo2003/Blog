@@ -10,6 +10,8 @@ const { SSL_OP_COOKIE_EXCHANGE } = require('constants');
 const uri = config;
 const client = new MongoClient(uri);
 const posts = client.db("ForumDB").collection("posts");
+const users = client.db("ForumDB").collection("users");
+
 
 app.use(express.static("page"));
 
@@ -58,11 +60,40 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
+    socket.on("logInCheck", async(data)=>{
+        console.log("Checking username and password of ", data[0]);
+        try {
+            let result = await users.findOne({"username": data[0]});
+            io.emit("logInResponse", Boolean(result && result.password == data[1]));
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
+
+    socket.on("checkUsername", async(username)=>{
+        console.log("Checking originality of username: " + username);
+        try {
+            let result = await users.findOne({"username": username});
+            io.emit("UsernameOriginality", Boolean(result));
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
+
+    socket.on("createNewUser", async(data)=>{
+        console.log("creating new user: ", data[0]);
+        try{
+            let result = await users.insertOne({"username": data[0], "password": data[1]});
+            io.emit("createdAUser");
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
+
+
     // socket.on("event", (value) => {});
     // io.emit("event", (value))
-
-    //TODO: Send all posts
-
-    //TODO: recieve incommig posts
-
 });
