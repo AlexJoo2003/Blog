@@ -23,7 +23,7 @@ function CreatePost(postData){
     // var postList = document.querySelector(".postList");
     var post = document.createElement("div");
     post.className = "post";
-    post.id = postData._id;
+    post.id = postData._id; // good job me from the past
     var top = document.createElement("div");
     top.className = "top";
     post.appendChild(top);
@@ -41,6 +41,9 @@ function CreatePost(postData){
     title.className = "title";
     title.textContent = postData.title;
     top.appendChild(title);
+    title.addEventListener("click", function(){
+        window.location.href = "post.html?id="+postData._id;
+    });
     var content = document.createElement("div");
     content.className = "content";
     content.textContent = postData.content;
@@ -59,3 +62,4 @@ function DisplayAllPosts(){
 document.querySelector(".createPost").addEventListener("click", function(){
     window.location.href = "../PostEditor.html";
 });
+

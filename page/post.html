@@ -5,10 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/postList.css">
 </head>
 <body>
     
-    
+    <header>
+        <div class="header-content">
+            <img src='https://dummyimage.com/500x500.png?text=Website%20Logo' alt=''/>
+            <h1><a href="index.html">Website Name</a></h1>
+        </div>
+        <center>
+            <a href="./signinPage.html">create a new account</a>
+        </center>
+    </header>
+    <main class="postList">
+        <div>
+            <em>only letters and numbers</em> <br>
+            <label>Username: </label> <input type="text" id="username" pattern="[a-zA-Z0-9-]+" required> <br>
+            <label>Password: </label> <input type="password" id="password" pattern="[a-zA-Z0-9-]+" required> <br>
+            <button id="login">Log in</button>
+        </div>
+    </main>
 
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="scripts/post.js"></script>
 </body>
 </html>

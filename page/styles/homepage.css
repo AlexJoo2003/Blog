@@ -17,3 +17,7 @@
 .createPost:hover{
     background-color: #c2b6b6;
 }
+
+.title:hover{
+    cursor: pointer;
+}

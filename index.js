@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const config = require("./config.js");
 const { SSL_OP_COOKIE_EXCHANGE } = require('constants');
 const uri = config;
@@ -29,8 +29,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-// https://www.mongodb.com/developer/how-to/real-time-chat-phaser-game-mongodb-socketio/
-
 io.on("connection", (socket) => { // User connected
     console.log("A user connected");
     socket.on("disconnect", () =>{
@@ -49,7 +47,7 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
-    socket.on("newPostCreated", async(post)=>{
+    socket.on("newPostCreated", async(post)=>{  // WHen a user created a new post
         console.log("new post recieved from a client", post);
         try{
             let result = await posts.insertOne(post);
@@ -60,7 +58,7 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
-    socket.on("logInCheck", async(data)=>{
+    socket.on("logInCheck", async(data)=>{  //Check if the username and password are correct for the log in
         console.log("Checking username and password of ", data[0]);
         try {
             let result = await users.findOne({"username": data[0]});
@@ -71,7 +69,7 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
-    socket.on("checkUsername", async(username)=>{
+    socket.on("checkUsername", async(username)=>{   // check if the username already exists in the database
         console.log("Checking originality of username: " + username);
         try {
             let result = await users.findOne({"username": username});
@@ -82,7 +80,7 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
-    socket.on("createNewUser", async(data)=>{
+    socket.on("createNewUser", async(data)=>{   // Create a new user
         console.log("creating new user: ", data[0]);
         try{
             let result = await users.insertOne({"username": data[0], "password": data[1]});
@@ -93,7 +91,26 @@ io.on("connection", (socket) => { // User connected
         }
     });
 
-
-    // socket.on("event", (value) => {});
-    // io.emit("event", (value))
+    socket.on("GivePostData", async(id)=>{  // Send post data to the post.html
+        console.log("Client requesting post with id: ", id);
+        try{
+            let o_id = new ObjectId(id);
+            let result = await posts.findOne({"_id": o_id});
+            io.emit("GetPostData", result);
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
+    
+    socket.on("deletePost", async(id)=>{    // Delete the post
+        console.log("deleting post with id: ", id);
+        try{
+            let o_id = new ObjectId(id);
+            let result = await posts.deleteOne({"_id": o_id});
+        }
+        catch(e){
+            console.log(e);
+        }
+    });
 });
