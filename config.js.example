@@ -1,1 +1,2 @@
 const uri = "mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&writeConcern=majority"
+module.exports = uri;
